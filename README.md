@@ -23,7 +23,7 @@ npm install
 npm start
 ```
 
-5. Go to the API Docs to `http://localhost:8080/docs`
+6. Go to the API Docs to `http://localhost:8080/docs`
 
 ## Scripts:
 1. Start the server locally:
