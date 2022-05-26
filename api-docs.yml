@@ -1,0 +1,155 @@
+openapi: 3.0.0
+info:
+  title: Antstack Task
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /v1/invoice:
+    post:
+      tags:
+        - default
+      summary: Create Bill
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                - item: Classical Songs Collection
+                  itemCategory: Music
+                  quantity: 1
+                  price: 500
+                - item: Pants
+                  itemCategory: Clothes
+                  quantity: 2
+                  price: 1200
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '474'
+            ETag:
+              schema:
+                type: string
+                example: W/"1da-KB0AmU2d9KwOeN+Nxw1hEBTjdMQ"
+            Date:
+              schema:
+                type: string
+                example: Thu, 26 May 2022 04:30:34 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                example-0:
+                  summary: '200: Success'
+                  value:
+                    ok: true
+                    result:
+                      timestamp: '2022-05-26T04:30:34.558Z'
+                      items:
+                        - item: Black Swan
+                          taxRate: 0
+                          subTotal: 300
+                          taxAmount: 0
+                          totalAmount: 300
+                        - item: Headache pills
+                          taxRate: 5
+                          subTotal: 250
+                          taxAmount: 12.5
+                          totalAmount: 262.5
+                        - item: Perfume
+                          taxRate: 18
+                          subTotal: 4000
+                          taxAmount: 720
+                          totalAmount: 4720
+                        - item: Sandwich
+                          taxRate: 5
+                          subTotal: 400
+                          taxAmount: 20
+                          totalAmount: 420
+                      subTotal: 5702.5
+                      discountRate: 5
+                      discount: 285.13
+                      total: 5417.37
+                example-1:
+                  summary: '200: Conditional tax rates based on price'
+                  value:
+                    ok: true
+                    result:
+                      timestamp: '2022-05-26T04:36:19.204Z'
+                      items:
+                        - item: Classical Songs Collection
+                          taxRate: 3
+                          subTotal: 500
+                          taxAmount: 15
+                          totalAmount: 515
+                        - item: Pants
+                          taxRate: 12
+                          subTotal: 2400
+                          taxAmount: 288
+                          totalAmount: 2688
+                      subTotal: 3203
+                      discountRate: 5
+                      discount: 160.15
+                      total: 3042.85
+        '400':
+          description: Bad Request
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '110'
+            ETag:
+              schema:
+                type: string
+                example: W/"6e-hB2BXUwoAFHsUFuYvaa7y2cCXWs"
+            Date:
+              schema:
+                type: string
+                example: Thu, 26 May 2022 04:34:05 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                message: >-
+                  "itemCategory" must be one of [Book, Clothes, Food, Medicine,
+                  Music, Imported]

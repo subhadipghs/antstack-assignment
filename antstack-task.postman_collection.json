@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "7a29de3e-fb7b-431d-a63e-9dabea881988",
+		"name": "Antstack Task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11095120"
+	},
+	"item": [
+		{
+			"name": "Create Bill",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"item\": \"Classical Songs Collection\",\n        \"itemCategory\": \"Music\",\n        \"quantity\": 1,\n        \"price\": 500\n    },\n    {\n        \"item\": \"Pants\",\n        \"itemCategory\": \"Clothes\",\n        \"quantity\": 2,\n        \"price\": 1200\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/invoice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"invoice"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200: Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"item\": \"Headache pills\",\n        \"itemCategory\": \"Medicine\",\n        \"quantity\": 5,\n        \"price\": 50\n    },\n    {\n        \"item\": \"Sandwich\",\n        \"itemCategory\": \"Food\",\n        \"quantity\": 2,\n        \"price\": 200\n    },\n    {\n        \"item\": \"Perfume\",\n        \"itemCategory\": \"Imported\",\n        \"quantity\": 1,\n        \"price\": 4000\n    },\n    {\n        \"item\": \"Black Swan\",\n        \"itemCategory\": \"Book\",\n        \"quantity\": 1,\n        \"price\": 300\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/invoice",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"invoice"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "474"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1da-KB0AmU2d9KwOeN+Nxw1hEBTjdMQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 26 May 2022 04:30:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ok\": true,\n    \"result\": {\n        \"timestamp\": \"2022-05-26T04:30:34.558Z\",\n        \"items\": [\n            {\n                \"item\": \"Black Swan\",\n                \"taxRate\": 0,\n                \"subTotal\": 300,\n                \"taxAmount\": 0,\n                \"totalAmount\": 300\n            },\n            {\n                \"item\": \"Headache pills\",\n                \"taxRate\": 5,\n                \"subTotal\": 250,\n                \"taxAmount\": 12.5,\n                \"totalAmount\": 262.5\n            },\n            {\n                \"item\": \"Perfume\",\n                \"taxRate\": 18,\n                \"subTotal\": 4000,\n                \"taxAmount\": 720,\n                \"totalAmount\": 4720\n            },\n            {\n                \"item\": \"Sandwich\",\n                \"taxRate\": 5,\n                \"subTotal\": 400,\n                \"taxAmount\": 20,\n                \"totalAmount\": 420\n            }\n        ],\n        \"subTotal\": 5702.5,\n        \"discountRate\": 5,\n        \"discount\": 285.13,\n        \"total\": 5417.37\n    }\n}"
+				},
+				{
+					"name": "400: Invalid category",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"item\": \"Headache pills\",\n        \"itemCategory\": \"Grocery\",\n        \"quantity\": 5,\n        \"price\": 50\n    },\n    {\n        \"item\": \"Sandwich\",\n        \"itemCategory\": \"Food\",\n        \"quantity\": 2,\n        \"price\": 200\n    },\n    {\n        \"item\": \"Perfume\",\n        \"itemCategory\": \"Imported\",\n        \"quantity\": 1,\n        \"price\": 4000\n    },\n    {\n        \"item\": \"Black Swan\",\n        \"itemCategory\": \"Book\",\n        \"quantity\": 1,\n        \"price\": 300\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/invoice",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"invoice"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "110"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"6e-hB2BXUwoAFHsUFuYvaa7y2cCXWs\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 26 May 2022 04:34:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"\\\"itemCategory\\\" must be one of [Book, Clothes, Food, Medicine, Music, Imported]\"\n}"
+				},
+				{
+					"name": "200: Conditional tax rates based on price",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"item\": \"Classical Songs Collection\",\n        \"itemCategory\": \"Music\",\n        \"quantity\": 1,\n        \"price\": 500\n    },\n    {\n        \"item\": \"Pants\",\n        \"itemCategory\": \"Clothes\",\n        \"quantity\": 2,\n        \"price\": 1200\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/invoice",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"invoice"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "213"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d5-aJYlNPxxNMFl2KfnGZIEKeo3qHM\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 26 May 2022 04:35:15 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ok\": true,\n    \"result\": {\n        \"timestamp\": \"2022-05-26T04:36:19.204Z\",\n        \"items\": [\n            {\n                \"item\": \"Classical Songs Collection\",\n                \"taxRate\": 3,\n                \"subTotal\": 500,\n                \"taxAmount\": 15,\n                \"totalAmount\": 515\n            },\n            {\n                \"item\": \"Pants\",\n                \"taxRate\": 12,\n                \"subTotal\": 2400,\n                \"taxAmount\": 288,\n                \"totalAmount\": 2688\n            }\n        ],\n        \"subTotal\": 3203,\n        \"discountRate\": 5,\n        \"discount\": 160.15,\n        \"total\": 3042.85\n    }\n}"
+				}
+			]
+		}
+	]
+}
