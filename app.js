@@ -20,6 +20,17 @@ const specs = swaggerJsdoc({
 
 app.use(morgan('tiny'))
 app.use(e.json())
+
+// health check endpoint
+app.get('/', (_, res) => {
+  return res.status(200).json({
+    success: true,
+    code: 200,
+    message: '🚀 Server is running',
+    uptime: process.uptime().toFixed(2) + 's',
+  })
+})
+
 // api
 app.use('/v1', api)
 // swagger ui
