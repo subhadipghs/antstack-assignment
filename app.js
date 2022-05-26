@@ -1,15 +1,29 @@
 import e from 'express'
 import morgan from 'morgan'
 import {api} from './api/index.js'
+import swaggerJsdoc from 'swagger-jsdoc'
+import swaggerUi from 'swagger-ui-express'
 import {logger} from './logger.js'
 import {HttpException, NotFound} from './exception.js'
 
 // app instance
-var app = e()
+const app = e()
+const specs = swaggerJsdoc({
+  swaggerDefinition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Antstack API',
+    },
+  },
+  apis: ['api-docs.yml'],
+})
 
 app.use(morgan('tiny'))
 app.use(e.json())
+// api
 app.use('/v1', api)
+// swagger ui
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(specs))
 
 // 404 not found handler
 app.use('*', (_, res) => {

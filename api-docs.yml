@@ -25,8 +25,8 @@ paths:
                   quantity: 2
                   price: 1200
       responses:
-        '200':
-          description: OK
+        '201':
+          description: Created
           headers:
             X-Powered-By:
               schema:
@@ -39,15 +39,15 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: '474'
+                example: '479'
             ETag:
               schema:
                 type: string
-                example: W/"1da-KB0AmU2d9KwOeN+Nxw1hEBTjdMQ"
+                example: W/"1df-xZ5GfvtA7IuEyLJ9oMZQUnIs/+Y"
             Date:
               schema:
                 type: string
-                example: Thu, 26 May 2022 04:30:34 GMT
+                example: Thu, 26 May 2022 05:42:44 GMT
             Connection:
               schema:
                 type: string
@@ -62,11 +62,11 @@ paths:
                 type: object
               examples:
                 example-0:
-                  summary: '200: Success'
+                  summary: '201: Success'
                   value:
-                    ok: true
+                    success: true
                     result:
-                      timestamp: '2022-05-26T04:30:34.558Z'
+                      timestamp: '2022-05-26T05:42:44.303Z'
                       items:
                         - item: Black Swan
                           taxRate: 0
@@ -93,11 +93,11 @@ paths:
                       discount: 285.13
                       total: 5417.37
                 example-1:
-                  summary: '200: Conditional tax rates based on price'
+                  summary: '201: Conditional tax rates'
                   value:
-                    ok: true
+                    success: true
                     result:
-                      timestamp: '2022-05-26T04:36:19.204Z'
+                      timestamp: '2022-05-26T05:43:40.125Z'
                       items:
                         - item: Classical Songs Collection
                           taxRate: 3
