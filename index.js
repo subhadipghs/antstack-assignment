@@ -1,6 +1,9 @@
 import http from 'http'
 import {app} from './app.js'
 import {logger} from './logger.js'
+import {config} from 'dotenv'
+
+config()
 
 const server = http.createServer(app)
 
