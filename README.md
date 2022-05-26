@@ -7,16 +7,17 @@ The goal is to create an api for which will generate the invoice from the purcha
 ```sh
 git clone https://github.com/subhadipghs/antstack-assignment
 ```
+2. Go to the cloned directory
 
-2. Install dependencies
+3. Install dependencies
 
 ```sh
 npm install
 ```
 
-3. Copy the `.env.example` content into `.env` file in the root directory
+4. Copy the `.env.example` content into `.env` file in the root directory
 
-4. Run the server
+5. Run the server
 
 ```sh
 npm start
